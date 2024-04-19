@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import { BsArrowsFullscreen } from "react-icons/bs";
-import './IframeViewer.css';
+import "./IframeViewer.css";
 
 // Função de validação de URL (pode ser movida para um arquivo utilitário)
 const validateUrl = (urlString: string) => {
@@ -27,7 +27,9 @@ const IframeViewer: React.FC<IframeViewerProps> = ({ url, height, width }) => {
     if (iframeRef.current) {
       if (!document.fullscreenElement) {
         iframeRef.current.requestFullscreen().catch((err) => {
-          console.error(`Erro ao ativar o modo tela cheia: ${err.message} (${err.name})`);
+          console.error(
+            `Erro ao ativar o modo tela cheia: ${err.message} (${err.name})`
+          );
           setHasError(true);
         });
       } else {
@@ -54,12 +56,12 @@ const IframeViewer: React.FC<IframeViewerProps> = ({ url, height, width }) => {
         setHasError(true);
       };
 
-      currentIframe?.addEventListener('load', handleLoad);
-      currentIframe?.addEventListener('error', handleError);
+      currentIframe?.addEventListener("load", handleLoad);
+      currentIframe?.addEventListener("error", handleError);
 
       return () => {
-        currentIframe?.removeEventListener('load', handleLoad);
-        currentIframe?.removeEventListener('error', handleError);
+        currentIframe?.removeEventListener("load", handleLoad);
+        currentIframe?.removeEventListener("error", handleError);
       };
     } else {
       setHasError(true);
@@ -69,26 +71,38 @@ const IframeViewer: React.FC<IframeViewerProps> = ({ url, height, width }) => {
 
   return (
     <>
-      {url && validateUrl(url) ? (
-        <>
-          {isLoading && <div className="loading">Carregando...</div>}
-          {hasError && <div className="error">Falha ao carregar o link.</div>}
-          <iframe
-            ref={iframeRef}
-            src={url}
-            className="iframe"
-            style={{ height: `${height}px`, width: `${width}px`, overflow: 'hidden', borderRadius: '10px' }}
-            title="Iframe Viewer"
-            onLoad={() => setIsLoading(false)}
-            onError={() => setHasError(true)}
-          ></iframe>
-          <BsArrowsFullscreen className="full-screen" onClick={toggleFullScreen} />
-        </>
-      ) : (
-        <div className="message" style={{ height: `${height}px`, width: `${width}px`, backgroundColor: 'black', userSelect: 'none', overflow:'hidden'}}>
-          {hasError ? 'URL inválida ou erro ao carregar.' : 'Nenhum link sendo carregado.'}
-        </div>
-      )}
+      
+        {url && validateUrl(url) ? (
+          <>
+            {isLoading && <div className="loading">Carregando...</div>}
+            {hasError && <div className="error">Falha ao carregar o link.</div>}
+            <iframe
+              ref={iframeRef}
+              src={url}
+              className="iframe"
+              style={{
+                height: `${height}px`,
+                width: `${width}px`,
+                borderRadius: "10px",
+              }}
+              title="Iframe Viewer"
+              onLoad={() => setIsLoading(false)}
+              onError={() => setHasError(true)}
+            ></iframe>
+            <BsArrowsFullscreen
+              className="full-screen"
+              onClick={toggleFullScreen}
+            />
+          </>
+        ) : (
+          <span
+            className="message"
+          >
+            {hasError
+              ? "URL inválida ou erro ao carregar."
+              : "Nenhum link sendo carregado."}
+          </span>
+        )}
     </>
   );
 };
