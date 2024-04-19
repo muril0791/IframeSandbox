@@ -1,0 +1,23 @@
+.inputsSize {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.inputWidthHeight {
+  width: 80px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.2s;
+}
+
+.inputWidthHeight:focus {
+  border-color: #0056b3;
+}
+
+.labelSizeControl {
+  font-size: 14px;
+  color: #666;
+  white-space: nowrap;
+}

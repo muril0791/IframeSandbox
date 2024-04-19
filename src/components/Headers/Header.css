@@ -1,0 +1,27 @@
+/* src/components/Header.css */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
+  height: 6%;
+}
+
+.header > div {
+  margin: 0 10px;
+  display: flex;
+}
+
+.inputWidthHeight {
+  width: 80px;
+
+  margin-left: 5px;
+}
+
+.urlInput {
+  flex-grow: 1;
+  margin-right: 20px;
+  max-width: 46.5%;
+  
+}
