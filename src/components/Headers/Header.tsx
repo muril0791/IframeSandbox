@@ -1,4 +1,3 @@
-// src/components/Header.tsx
 import React from 'react';
 import './Header.css';
 import UrlInput from '../UrlInput';

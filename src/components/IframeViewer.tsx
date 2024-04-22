@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { BsArrowsFullscreen } from "react-icons/bs";
 import "./IframeViewer.css";
 
-// Função de validação de URL (pode ser movida para um arquivo utilitário)
 const validateUrl = (urlString: string) => {
   try {
     new URL(urlString);

@@ -1,4 +1,3 @@
-// src/components/HeaderSizeControls.tsx
 import React from 'react';
 import './HeaderSizeControls.css';
 
