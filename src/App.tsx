@@ -4,7 +4,7 @@ import validateUrl from "./utils/validateUrl";
 import "./App.css";
 import Header from "./components/Headers/Header";
 import IframeViewer from "./components/IframeViewer";
-
+import { Analytics } from "@vercel/analytics/react"
 function App() {
   const [url, setUrl] = useState("");
   const [iframeHeight, setIframeHeight] = useState(712);
@@ -33,6 +33,7 @@ function App() {
 
   return (
     <div className="app">
+      <Analytics/>
       <section style={{width: '100%', height:'100%'}}>
         {" "}
         <Header
